@@ -1,0 +1,7 @@
+# ios
+itc_team_id("126392684")
+
+# android
+json_key_file("android/play-store-credentials.json")
+package_name("com.mobile.quantum")
+

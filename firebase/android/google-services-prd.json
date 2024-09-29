@@ -1,0 +1,57 @@
+{
+    "project_info": {
+        "project_number": "822382707612",
+        "project_id": "quan2umprod",
+        "storage_bucket": "quan2umprod.appspot.com"
+    },
+    "client": [{
+        "client_info": {
+            "mobilesdk_app_id": "1:822382707612:android:d8bca263355ff838b13e59",
+            "android_client_info": {
+                "package_name": "com.mobile.quantum"
+            }
+        },
+        "oauth_client": [{
+                "client_id": "822382707612-f688igjd9oh0u0fp9jv6l8bsq782tskd.apps.googleusercontent.com",
+                "client_type": 1,
+                "android_info": {
+                    "package_name": "com.mobile.quantum",
+                    "certificate_hash": "9a126d2fc49186a0013989819e8543bf4f501ba8"
+                }
+            },
+            {
+                "client_id": "822382707612-qvu9dnmci8mcsad90sm5aaf1ht3gg3hp.apps.googleusercontent.com",
+                "client_type": 1,
+                "android_info": {
+                    "package_name": "com.mobile.quantum",
+                    "certificate_hash": "d9abe68726225f4a99e3deba7668ca5f15c9cd93"
+                }
+            },
+            {
+                "client_id": "822382707612-bkp5ngaivmmpqi85egaajqbjk1uofa6v.apps.googleusercontent.com",
+                "client_type": 3
+            }
+        ],
+        "api_key": [{
+            "current_key": "AIzaSyB1k_ZM2XkXFKanF6St9HPB59RfxKw0dJA"
+        }],
+        "services": {
+            "appinvite_service": {
+                "other_platform_oauth_client": [{
+                        "client_id": "822382707612-bkp5ngaivmmpqi85egaajqbjk1uofa6v.apps.googleusercontent.com",
+                        "client_type": 3
+                    },
+                    {
+                        "client_id": "822382707612-l8g3cchsn7bqf9ji68asti2rq22pc24n.apps.googleusercontent.com",
+                        "client_type": 2,
+                        "ios_info": {
+                            "bundle_id": "com.peiko.mobile.quantum",
+                            "app_store_id": "1567585202"
+                        }
+                    }
+                ]
+            }
+        }
+    }],
+    "configuration_version": "1"
+}

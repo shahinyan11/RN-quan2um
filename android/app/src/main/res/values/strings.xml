@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Quan2um</string>
+    <string name="facebook_app_id">1729128707473753</string>
+    <string name="facebook_client_token">36884f0afc1b61bf64f1fa725f0e58b2</string>
+    <string name="splash_text">Cryptocurrency exchange Bitcoin Ecomining</string>
+    <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
+    <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">MWCWIsdNIb-37wbIKZF2Ybvf4VkVA6Ria80FG</string>
+</resources>

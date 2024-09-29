@@ -1,0 +1,13 @@
+diff --git a/node_modules/i18next-async-storage-backend/dist/commonjs/index.js b/node_modules/i18next-async-storage-backend/dist/commonjs/index.js
+index e514f63..6492732 100644
+--- a/node_modules/i18next-async-storage-backend/dist/commonjs/index.js
++++ b/node_modules/i18next-async-storage-backend/dist/commonjs/index.js
+@@ -15,7 +15,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
+ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+ 
+ // get from whatever version of react native that is being used.
+-var AsyncStorage = (require('react-native') || {}).AsyncStorage;
++var AsyncStorage = (require('@react-native-async-storage/async-storage') || {}).AsyncStorage;
+ 
+ var storage = {
+   setItem: function setItem(key, value) {

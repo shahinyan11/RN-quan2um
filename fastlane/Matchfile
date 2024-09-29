@@ -1,0 +1,8 @@
+git_url("https://arpkirill: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@github.com/arpkirill/q2-cert-fastlane")
+
+storage_mode("git")
+
+type("development")
+
+app_identifier("com.q2.eco")
+username("develop.web.soft@gmail.com")

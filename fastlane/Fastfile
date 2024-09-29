@@ -1,0 +1,42 @@
+ENV["FASTLANE_SESSION"] = '---\n- !ruby/object:HTTP::Cookie\n  name: myacinfo\n  value: DAWTKNV323952cf8084a204fb20ab2508441a07d02d376b22a1feafe9cb5bf549528ff9ead1b4b00527db51b276abd00c00db180dfecb0c43d1608b93ca12269eebf8e513d48a72f51c80d8ede868d0994a23ec918cf869025da18c9e7e0f8236d736210aa236027652c2065511071844ecdf5cd9c2b25b3b25ec066256e9261d0f8a4c41666eb685b0fa7357d12ad519039b73e7923dc930fb491488e31cc86fcd0ebad6ba19bbed072748c8fe24b498c4989228f1b7e63984b1032ddc237e41619f13eb9730c5742e512baf98dc0ecac018a0e6ad3e605ccc17ffe7d267cf57a5a45d5d30f1982540e917c75daa5cc547f9d2e2f72bd402e61d82e042d8377b3fb1030724520b515c5a2e18603556e07e875d4258b317eb8ba5cd852ae6a5ad38eb321dfeaa3e89fb981bc65f1381e827ef1f614e90e5319920b58681faf3742c4875160f7c5e396f6e0b0d00c0602b342cb052cbb0e7932fbf51c8d1987fdfdbfded536b6c6b3bbfc9e149dafc185139b35d035f07ba2e8e5f820c101f972dbb4d21239acbb650f4005ea7869552a810e782336b5e1b3e76829e6e60ce03d937695fc65d22fb310a530e698686f9f56291c66c48914b88d84258574192f444b0eac56720b89c059ade37c51f62a45901932ccb9e383667dd02cb493438df4341207f2f23afbd57e604ae0752e8c4ee865d025f4214c8f382deabdffda587c75b0b49e0d2725462172c661d2c3897b5cb079145aeb1d576584e6cc94001ca5c069a16159222a77c6dbb6c8c3d1e6f1007cf5044d2518a45bca8df9318c3d8c9d181138ec8ea3eddd4db76f02705f4e31b30dc14cb4294bee83c117a5d63be2b5d29145145c9b4ed4e066340aafb5c744be613783204b6398b49db0d628f5b7213211e82193673c790f54b1778d59ec7121b6722a9d42a0c1ba896b2318f1e0dee2f5cc1c3cc20090f51dad275d110f2a237ec586c49f40276f0daac0b3aa24bc9489fd98cf585a47V3\n  domain: apple.com\n  for_domain: true\n  path: "/"\n  secure: true\n  httponly: true\n  expires: \n  max_age: \n  created_at: 2023-07-11 09:35:09.645865000 +04:00\n  accessed_at: 2023-07-11 09:35:09.652803000 +04:00\n- !ruby/object:HTTP::Cookie\n  name: DES5fb5af8196d5d173f154f975797c280a1\n  value: HSARMTKNSRVXWFlaO6FuzZJuGohg2UW2K8/XW/TIJ5tgRkizjS0WkR32r1H3qTKDER+SwKpbRJu03FxGHSd+RxLslDfqrzOexug8OA7aFEWdusp1pJ7+2yRiVG+seWhWXw0yLzj3DX3Bge/kOFoaWEant7nNsVj1+CNt85oJIFJELbRaEQcULGgr9BTOFLjPsMtdfS9wH4Pat1Dl+fhm4moc7uLqJtCBi2PsWKHVUg==SRVX\n  domain: idmsa.apple.com\n  for_domain: true\n  path: "/"\n  secure: true\n  httponly: true\n  expires: \n  max_age: 2592000\n  created_at: &1 2023-07-11 09:35:09.645693000 +04:00\n  accessed_at: *1\n- !ruby/object:HTTP::Cookie\n  name: dqsid\n  value: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODkwNTM3MTAsImp0aSI6ImVGYmQyNDBxcVlrckN6N3E4ZlBITkEifQ.4Tq9LPhk9O0fBu2C311t2XmhAoHdY8Fq8dSy4gEWTYU\n  domain: appstoreconnect.apple.com\n  for_domain: false\n  path: "/"\n  secure: true\n  httponly: true\n  expires: \n  max_age: 1800\n  created_at: &2 2023-07-11 09:35:11.060452000 +04:00\n  accessed_at: *2\n'
+
+
+# IOS
+ENV["FASTLANE_USER"] = "develop.web.soft@gmail.com"
+ENV["FASTLANE_PASSWORD"] = "WEBios123!"
+ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "nqdx-ikxi-seki-iber"
+ENV["MATCH_PASSWORD"] = "arpkirill"
+ENV["FASTLANE_TEAM_ID"] = "2J36TLR7FT"
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    increment_build_number(xcodeproj: "ios/QuantumApp.xcodeproj")
+    match(type: "appstore")
+    build_app(workspace: "ios/QuantumApp.xcworkspace", scheme: "QuantumApp")
+    upload_to_testflight(
+        skip_submission: true,
+        skip_waiting_for_build_processing: true
+    )
+  end
+end
+
+# android
+previous_build_number = google_play_track_version_codes(track: "internal")[0]
+current_build_number = previous_build_number + 1
+increment_version_code(
+  gradle_file_path: './android/app/build.gradle',
+  version_code: current_build_number
+)
+platform :android do
+    desc "Android build and release to beta"
+    lane :beta do
+        gradle(task: 'clean', project_dir: './android/')
+        gradle(task: 'bundle', build_type: 'Release', project_dir: './android')
+        supply(
+            track: 'internal',
+            aab: './android/app/build/outputs/bundle/release/app-release.aab',
+        )
+    end
+end
+

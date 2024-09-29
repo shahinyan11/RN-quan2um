@@ -1,0 +1,2 @@
+To check the functionality of the application, you need to log in using e-mail. You also need to pass two-factor authentication.
+Test account authentication code in Google Authenticator UTQACX73SY5YAWFS

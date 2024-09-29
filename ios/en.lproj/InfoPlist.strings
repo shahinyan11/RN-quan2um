@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  QuantumApp
+
+  Created by Артур Дученко on 02.09.2021.
+  
+*/
+"NSCameraUsageDescription" = "We need access to your camera for adding picture in application";
+"NSLocationWhenInUseUsageDescription" = "We need access to your location for more security of your personal data";
+"NSMicrophoneUsageDescription" = "We need access to your microphone for more security of your personal data";
+"NSPhotoLibraryAddUsageDescription" = "We need access to your photo library to upload image documents";
+"NSPhotoLibraryUsageDescription" = "We need access to your photo library for adding picture in application";

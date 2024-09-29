@@ -1,0 +1,76 @@
+stages:
+  - app-center
+  - publish-android
+  - publish-ios
+
+variables:
+  LC_ALL: "en_US.UTF-8"
+  LANG: "en_US.UTF-8"
+
+before_script:
+  - gem install bundler
+  - bundle install
+  - yarn install
+  - yarn postinstall
+
+app_center:ios:
+  allow_failure: true
+  dependencies: []
+  stage: app-center
+  image: reactnativecommunity/react-native-android
+  script:
+    - npm install -g appcenter-cli
+    - appcenter login --token $APPCENTER_TOKEN
+    - appcenter codepush release-react -a Quan2um/quan2um-ios -d Production
+
+app_center:android:
+  allow_failure: true
+  dependencies: []
+  stage: app-center
+  image: reactnativecommunity/react-native-android
+  script:
+    - npm install -g appcenter-cli
+    - appcenter login --token $APPCENTER_TOKEN
+    - appcenter codepush release-react -a Quan2um/quan2um -d Production
+
+publish_android:
+  allow_failure: true
+  dependencies: []
+  stage: publish-android
+  image: reactnativecommunity/react-native-android
+  artifacts:
+    paths:
+      - fastlane/screenshots
+      - fastlane/logs
+  script:
+    - cd android
+    - ./gradlew clean
+    - cd ../
+    - curl --silent "https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/download-secure-files/-/raw/main/installer" | bash
+    - mv .secure_files/release-upload.keystore android/app/release-upload.keystore
+    - fastlane android beta
+    - readlink -f app-release.aab
+  only:
+   - develop
+   - test
+ # tags:
+ #   - android
+
+publish_ios:
+  allow_failure: true
+  dependencies: []
+  stage: publish-ios
+  artifacts:
+    paths:
+      - fastlane/screenshots
+      - fastlane/logs
+  script:
+    - cd ios/
+    - pod install
+    - cd ../
+    - fastlane ios beta
+  only:
+    - develop
+  tags:
+    - local_mac
+

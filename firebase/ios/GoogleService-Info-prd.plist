@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>822382707612-l8g3cchsn7bqf9ji68asti2rq22pc24n.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.822382707612-l8g3cchsn7bqf9ji68asti2rq22pc24n</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>822382707612-ih3m9aj79gtb8jjqu1df7p9e8q7155kf.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAGDymzaZRnz1P5diFjH0mFMKyBJer1cX0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>822382707612</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.peiko.mobile.quantum</string>
+	<key>PROJECT_ID</key>
+	<string>quan2umprod</string>
+	<key>STORAGE_BUCKET</key>
+	<string>quan2umprod.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:822382707612:ios:5c012c6bd492c772b13e59</string>
+</dict>
+</plist>

@@ -1,0 +1,55 @@
+diff --git a/node_modules/vision-camera-face-detector/android/src/main/java/com/visioncamerafacedetector/VisionCameraFaceDetectorPlugin.java b/node_modules/vision-camera-face-detector/android/src/main/java/com/visioncamerafacedetector/VisionCameraFaceDetectorPlugin.java
+index 3e4b3ff..b1f61e5 100644
+--- a/node_modules/vision-camera-face-detector/android/src/main/java/com/visioncamerafacedetector/VisionCameraFaceDetectorPlugin.java
++++ b/node_modules/vision-camera-face-detector/android/src/main/java/com/visioncamerafacedetector/VisionCameraFaceDetectorPlugin.java
+@@ -47,26 +47,13 @@ public class VisionCameraFaceDetectorPlugin extends FrameProcessorPlugin {
+   private WritableMap processBoundingBox(Rect boundingBox) {
+     WritableMap bounds = Arguments.createMap();
+
+-    // Calculate offset (we need to center the overlay on the target)
+-    Double offsetX =  (boundingBox.exactCenterX() - ceil(boundingBox.width())) / 2.0f;
+-    Double offsetY =  (boundingBox.exactCenterY() - ceil(boundingBox.height())) / 2.0f;
+-
+-    Double x = boundingBox.right + offsetX;
+-    Double y = boundingBox.top + offsetY;
+-
+-
+-
+-    bounds.putDouble("x", boundingBox.centerX() + (boundingBox.centerX() - x));
+-    bounds.putDouble("y", boundingBox.centerY() + (y - boundingBox.centerY()));
++    bounds.putDouble("x", boundingBox.centerX());
++    bounds.putDouble("y", boundingBox.centerY());
++    bounds.putDouble("top", boundingBox.top);
++    bounds.putDouble("left", boundingBox.left);
+     bounds.putDouble("width", boundingBox.width());
+     bounds.putDouble("height", boundingBox.height());
+
+-
+-    bounds.putDouble("boundingCenterX", boundingBox.centerX());
+-    bounds.putDouble("boundingCenterY", boundingBox.centerY());
+-    bounds.putDouble("boundingExactCenterX", boundingBox.exactCenterX());
+-    bounds.putDouble("boundingExactCenterY", boundingBox.exactCenterY());
+-
+     return bounds;
+   }
+
+diff --git a/node_modules/vision-camera-face-detector/src/index.ts b/node_modules/vision-camera-face-detector/src/index.ts
+index 8ca44fb..abe1fd7 100644
+--- a/node_modules/vision-camera-face-detector/src/index.ts
++++ b/node_modules/vision-camera-face-detector/src/index.ts
+@@ -13,11 +13,14 @@ export interface Face {
+   rightEyeOpenProbability: number;
+   smilingProbability: number;
+   bounds: {
+-    y: number;
+     x: number;
++    y: number;
++    top: number;
++    left: number;
+     height: number;
+     width: number;
+   };
++
+   contours: {
+     FACE: Point[];
+     NOSE_BOTTOM: Point[];
